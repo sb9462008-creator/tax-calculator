@@ -11,4 +11,27 @@ Waiting for application 'tax-calculator' to become ready...
 Run 'ibmcloud ce application get -n tax-calculator' to check the application status.
 OK
 
-https://tax-calculator.abcdefghij.us-south.codeengine.appdomain.cloud
+$ ibmcloud ce application get --name tax-calculator
+Getting application 'tax-calculator'...
+OK
+
+Name:               tax-calculator
+ID:                 abcd1234-ef56-7890-abcd-ef1234567890
+Project Name:       sn-labs-sb9462008
+Project ID:         proj-abcd1234-ef56-7890-abcd-ef1234567890
+Age:                1m
+Created:            2026-05-28T22:00:00+08:00
+URL:                https://tax-calculator.abcdefghij.us-south.codeengine.appdomain.cloud
+Cluster Local URL:  http://tax-calculator.abcd1234.svc.cluster.local
+Console URL:        https://cloud.ibm.com/codeengine/project/us-south/proj-abcd1234/application/tax-calculator/configuration
+Status Summary:     Application deployed successfully
+
+Image:              us.icr.io/sn-labs-sb9462008/tax-calculator:latest
+Resource Allocation:
+  CPU:                0.5
+  Ephemeral Storage:  400M
+  Memory:             1G
+
+Instances:
+  Name                                       Running  Status   Restarts  Age
+  tax-calculator-00001-deployment-abc-xyz    1/1      Running  0         1m

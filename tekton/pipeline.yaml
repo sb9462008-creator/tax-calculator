@@ -1,16 +1,19 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: tax-calculator-pipeline
+  name: cd-pipeline
 spec:
   params:
-    - name: IMAGE
-      description: The image to build and push
-      type: string
     - name: repo-url
-      description: The git repository URL
+      description: The URL of the git repo to clone
       type: string
-      default: "https://github.com/sb9462008-creator/tax-calculator"
+    - name: branch
+      description: The branch to clone
+      default: main
+      type: string
+    - name: build-image
+      description: The image to build
+      type: string
   workspaces:
     - name: pipeline-workspace
   tasks:
@@ -24,6 +27,8 @@ spec:
       params:
         - name: url
           value: $(params.repo-url)
+        - name: revision
+          value: $(params.branch)
     - name: npminstall
       taskRef:
         name: npm
@@ -51,4 +56,4 @@ spec:
           workspace: pipeline-workspace
       params:
         - name: IMAGE
-          value: $(params.IMAGE)
+          value: $(params.build-image)

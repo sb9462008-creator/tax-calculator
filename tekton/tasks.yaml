@@ -5,12 +5,19 @@ metadata:
 spec:
   workspaces:
     - name: source
+      description: The workspace containing the source code
+  params:
+    - name: PATH_CONTEXT
+      description: The path to the source code
+      default: .
+      type: string
   steps:
     - name: npm-install
       image: node:lts
       workingDir: $(workspaces.source.path)
-      command: ["npm"]
-      args: ["install"]
+      command: ["/bin/bash", "-c"]
+      args:
+        - npm install
 ---
 apiVersion: tekton.dev/v1beta1
 kind: Task
@@ -19,9 +26,16 @@ metadata:
 spec:
   workspaces:
     - name: source
+      description: The workspace containing the source code
+  params:
+    - name: PATH_CONTEXT
+      description: The path to the source code
+      default: .
+      type: string
   steps:
     - name: jasmine-tests
       image: node:lts
       workingDir: $(workspaces.source.path)
-      command: ["npx"]
-      args: ["jasmine"]
+      command: ["/bin/bash", "-c"]
+      args:
+        - npx jasmine
