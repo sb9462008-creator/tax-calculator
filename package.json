@@ -1,0 +1,12 @@
+{
+  "name": "tax-calculator",
+  "version": "1.0.0",
+  "description": "Tax Calculator Web Application",
+  "main": "taxCalculator.js",
+  "scripts": {
+    "test": "npx jasmine"
+  },
+  "devDependencies": {
+    "jasmine": "^4.6.0"
+  }
+}

@@ -1,0 +1,14 @@
+$ ibmcloud ce application create --name tax-calculator \
+  --image us.icr.io/sn-labs-sb9462008/tax-calculator:latest \
+  --registry-secret icr-secret \
+  --port 80
+
+Creating application 'tax-calculator'...
+The Route is still working to become ready.
+Configuration 'tax-calculator' is waiting for a Revision to become ready.
+Ingress has not yet been reconciled.
+Waiting for application 'tax-calculator' to become ready...
+Run 'ibmcloud ce application get -n tax-calculator' to check the application status.
+OK
+
+https://tax-calculator.abcdefghij.us-south.codeengine.appdomain.cloud
