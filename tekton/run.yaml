@@ -7,11 +7,11 @@ spec:
     name: cd-pipeline
   params:
     - name: repo-url
-      value: https://github.com/sb9462008-creator/tax-calculator
+      value: "https://github.com/sb9462008-creator/tax-calculator"
     - name: branch
-      value: main
+      value: "main"
     - name: build-image
-      value: us.icr.io/sn-labs-sb9462008/tax-calculator:latest
+      value: "us.icr.io/sn-labs-sb9462008/tax-calculator:latest"
   workspaces:
     - name: pipeline-workspace
       volumeClaimTemplate:

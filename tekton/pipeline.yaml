@@ -5,14 +5,11 @@ metadata:
 spec:
   params:
     - name: repo-url
-      description: The URL of the git repo to clone
       type: string
     - name: branch
-      description: The branch to clone
-      default: main
       type: string
+      default: "main"
     - name: build-image
-      description: The image to build
       type: string
   workspaces:
     - name: pipeline-workspace
@@ -21,14 +18,14 @@ spec:
       taskRef:
         name: git-clone
         kind: ClusterTask
-      workspaces:
-        - name: output
-          workspace: pipeline-workspace
       params:
         - name: url
           value: $(params.repo-url)
         - name: revision
           value: $(params.branch)
+      workspaces:
+        - name: output
+          workspace: pipeline-workspace
     - name: npminstall
       taskRef:
         name: npm
@@ -51,9 +48,9 @@ spec:
         kind: ClusterTask
       runAfter:
         - tests
-      workspaces:
-        - name: source
-          workspace: pipeline-workspace
       params:
         - name: IMAGE
           value: $(params.build-image)
+      workspaces:
+        - name: source
+          workspace: pipeline-workspace
